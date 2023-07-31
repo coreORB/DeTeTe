@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"filewatcher.commands": [
+			{
+				"match": "bin\\/.*\\.dart",
+				"isAsync": false,
+				"event": "onFileChange",
+				"vscodeTask": "code-runner.run"
+			},
+		],
+	},
+	"extensions": {
+		"recommendations": [
+			"appulate.filewatcher",
+			"HarryHopkinson.vs-code-runner",
+		]
+	}
+}
