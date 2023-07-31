@@ -1,8 +1,6 @@
 # jsDeTeTe
 inputs/*
-!inputs/input.txt
 outputs/*
-!outputs/output.txt
 
 
 # Files and directories created by pub.
