@@ -1,3 +1,10 @@
+import 'package:detete/input.dart';
+import 'package:detete/output.dart';
+
 void main(List<String> arguments) {
-  print('Hello world!');
+  transform();
+}
+
+void transform() {
+  //your code here
 }

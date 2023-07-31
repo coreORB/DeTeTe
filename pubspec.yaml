@@ -1,5 +1,5 @@
-name: cli
-description: A sample command-line application.
+name: detete
+description: Tool for quick data transforming
 version: 1.0.0
 # homepage: https://www.example.com
 
