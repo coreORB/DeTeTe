@@ -7,15 +7,7 @@ List<String> _outputPaths = [];
 int _inputsPathsIndex = 0;
 int _outputsPathsIndex = 0;
 
-void configure(List<String> arguments) {
-  try {
-    parseArgs(arguments);
-  } on ArgumentsExcetion catch (e) {
-    print('ERROR: $e');
-    exit(1);
-  }
-}
-
+/// Parses command line [arguments] to list of input and output filepaths.
 void parseArgs(List<String> arguments) {
   _inputPaths = [];
   _outputPaths = [];
@@ -28,13 +20,13 @@ void parseArgs(List<String> arguments) {
     } else if (arg == '-o') {
       mode = Mode.outputs;
     } else if (arg == '-h' || arg == '--help') {
-      printHelp();
+      _printHelp();
       exit(0);
     } else if (mode == null) {
       final msg = 'unknown argument \'$arg\'';
-      print('ERROR: $msg');
-      printHelp();
-      throw ArgumentsExcetion(msg);
+      print('ERROR: $msg\n');
+      _printHelp();
+      exit(1);
     } else {
       switch (mode) {
         case Mode.inputs:
@@ -48,8 +40,8 @@ void parseArgs(List<String> arguments) {
   }
 }
 
-String getInputPathFromArgs(String filepath, bool skipCliArgs) {
-  if (skipCliArgs) {
+String getInputPathFromArgs(String filepath, bool skipInCliArgs) {
+  if (skipInCliArgs) {
     return filepath;
   } else if (_inputsPathsIndex < _inputPaths.length) {
     final inputPath = _inputPaths[_inputsPathsIndex];
@@ -62,8 +54,8 @@ String getInputPathFromArgs(String filepath, bool skipCliArgs) {
   }
 }
 
-String getOutputPathFromArgs(String filepath, bool skipCliArgs) {
-  if (skipCliArgs) {
+String getOutputPathFromArgs(String filepath, bool skipInCliArgs) {
+  if (skipInCliArgs) {
     return filepath;
   } else if (_outputsPathsIndex < _outputPaths.length) {
     final outputPath = _outputPaths[_outputsPathsIndex];
@@ -76,7 +68,7 @@ String getOutputPathFromArgs(String filepath, bool skipCliArgs) {
   }
 }
 
-void printHelp() {
+void _printHelp() {
   print('usage: script_name [-i input_filepaths] [-o output_filepaths]');
 }
 
