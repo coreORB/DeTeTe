@@ -16,6 +16,7 @@
 	},
 	"extensions": {
 		"recommendations": [
+			"dart-code.dart-code",
 			"appulate.filewatcher",
 			"HarryHopkinson.vs-code-runner",
 		]
