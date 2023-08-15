@@ -1,4 +1,4 @@
-import 'package:detete/extensions.dart';
+import 'package:detete/utils.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -49,5 +49,4 @@ void main() {
           throwsA(TypeMatcher<FormatException>()));
     });
   }
-  //todo: test with exception
 }
