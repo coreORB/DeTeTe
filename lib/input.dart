@@ -8,6 +8,11 @@ import 'package:detete/configure.dart';
 ///
 /// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
 /// when script is run from command line.
+///
+/// Example:
+/// ```dart
+/// String content = input.readAsString();
+/// ```
 String readAsString({
   String filepath = "inputs/input.txt",
   bool skipInCliArgs = false,
@@ -21,6 +26,11 @@ String readAsString({
 ///
 /// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
 /// when script is run from command line.
+///
+/// Example:
+/// ```dart
+/// List<String> content = input.readAsLines();
+/// ```
 List<String> readAsLines({
   String filepath = "inputs/input.txt",
   bool skipInCliArgs = false,
@@ -34,6 +44,11 @@ List<String> readAsLines({
 ///
 /// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
 /// when script is run from command line.
+///
+/// Example:
+/// ```dart
+/// Uint8List content = input.readAsBytes();
+/// ```
 Uint8List readAsBytes({
   String filepath = "inputs/input.txt",
   bool skipInCliArgs = false,

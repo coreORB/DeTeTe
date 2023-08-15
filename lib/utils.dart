@@ -2,11 +2,37 @@ import 'package:collection/collection.dart';
 
 extension StringRegex on String {
   /// It's just [RegExp.allMatches()] reverted.
-  Iterable<RegExpMatch> matchesAll(RegExp regex, {int start = 0}) {
+  ///
+  /// Example:
+  /// ```dart
+  /// RegExp exp = RegExp(r'(\w+)');
+  /// var str = 'Dash is a bird';
+  /// Iterable<Match> matches = str.matchesAll(exp, 8);
+  /// for (final Match m in matches) {
+  ///   String match = m[0]!;
+  ///   print(match);
+  /// }
+  /// ```
+  /// The output of the example is:
+  ///
+  /// a
+  /// bird
+  ///
+  /// Copied from RegExp.
+  Iterable<RegExpMatch> matchesAll(RegExp regex, [int start = 0]) {
     return regex.allMatches(this, start);
   }
 
   /// It's just [RegExp.firstMatch()] reverted.
+  ///
+  /// Example:
+  /// ```dart
+  /// final string = '[00:13.37] This is a chat message.';
+  /// final regExp = RegExp(r'c\w*');
+  /// final match = string.matchesFirst(regExp)!;
+  /// print(match[0]); // chat
+  /// ```
+  /// Copied from RegExp.
   RegExpMatch? matchesFirst(RegExp regex) {
     return regex.firstMatch(this);
   }
@@ -22,6 +48,11 @@ extension DevCaseConvert on String {
   /// * kebab-case
   /// * snake_case
   /// * UPPER_CASE_SNAKE_CASE
+  ///
+  /// Example:
+  /// ```dart
+  /// 'my-var'.toCase(Case.camel); //myVar
+  /// ```
   String toCase(Case toCase) {
     List<String> parts = [];
     if (matchesAll(RegExp(r'^[a-z][a-z-]*$')).isNotEmpty) {

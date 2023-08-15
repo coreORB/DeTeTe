@@ -9,6 +9,11 @@ extension OutputTextFile on String {
   ///
   /// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
   /// when script is run from command line.
+  ///
+  /// Example:
+  /// ```dart
+  /// 'foo'.writeAsString();
+  /// ```
   void writeAsString({
     String filepath = "outputs/output.txt",
     bool skipInCliArgs = false,
@@ -23,6 +28,11 @@ extension OutputTextFile on String {
 ///
 /// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
 /// when script is run from command line.
+///
+/// Example:
+/// ```dart
+/// output.writeAsString('foo');
+/// ```
 void writeAsString(
   String content, {
   String filepath = "outputs/output.txt",
@@ -39,6 +49,11 @@ extension OutputTextFileLinesIterable<T> on Iterable<T> {
   ///
   /// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
   /// when script is run from command line.
+  ///
+  /// Example:
+  /// ```dart
+  /// ['foo', 'bar'].writeIterableAsString();
+  /// ```
   void writeIterableAsString({
     String filepath = "outputs/output.txt",
     bool skipInCliArgs = false,
@@ -55,6 +70,11 @@ extension OutputTextFileLinesIterable<T> on Iterable<T> {
 ///
 /// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
 /// when script is run from command line.
+///
+/// Example:
+/// ```dart
+/// output.writeIterableAsString(['foo', 'bar']);
+/// ```
 void writeIterableAsString<T>(
   Iterable<T> content, {
   String filepath = "outputs/output.txt",
@@ -75,8 +95,13 @@ extension OutputBytesFile on Uint8List {
   ///
   /// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
   /// when script is run from command line.
-  void writeAsBytes(
-    String filepath, {
+  ///
+  /// Example:
+  /// ```dart
+  /// Uint8List.fromList([2, 5]).writeAsBytes();
+  /// ```
+  void writeAsBytes({
+    String filepath = "outputs/output.txt",
     bool skipInCliArgs = false,
   }) {
     filepath = getOutputPathFromArgs(filepath, skipInCliArgs);
@@ -88,10 +113,15 @@ extension OutputBytesFile on Uint8List {
 ///
 /// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
 /// when script is run from command line.
+///
+/// Example:
+/// ```dart
+/// output.writeAsBytes(Uint8List.fromList([2, 5]));
+/// ```
 void writeAsBytes(
   Uint8List content, {
   String filepath = "outputs/output.txt",
   bool skipInCliArgs = false,
 }) {
-  content.writeAsBytes(filepath, skipInCliArgs: skipInCliArgs);
+  content.writeAsBytes(filepath: filepath, skipInCliArgs: skipInCliArgs);
 }
