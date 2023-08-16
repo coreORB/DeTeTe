@@ -56,3 +56,20 @@ Uint8List readAsBytes({
   filepath = getInputPathFromArgs(filepath, skipInCliArgs);
   return File(filepath).readAsBytesSync();
 }
+
+/// Reads file at [filepath] as JSON.
+///
+/// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
+/// when script is run from command line.
+///
+/// Example:
+/// ```dart
+/// var content = input.readAsJson();
+/// ```
+dynamic readAsJson({
+  String filepath = "inputs/input.txt",
+  bool skipInCliArgs = false,
+}) {
+  filepath = getInputPathFromArgs(filepath, skipInCliArgs);
+  return jsonDecode(File(filepath).readAsStringSync());
+}

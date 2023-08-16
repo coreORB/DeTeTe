@@ -125,3 +125,50 @@ void writeAsBytes(
 }) {
   content.writeAsBytes(filepath: filepath, skipInCliArgs: skipInCliArgs);
 }
+
+extension OutputJsonFile on Object {
+  /// Writes file at [filepath] with [this] as JSON.
+  ///
+  /// By default JSON will be formated, set [pretty] to false to output minimal
+  /// JSON.
+  /// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
+  /// when script is run from command line.
+  ///
+  /// Example:
+  /// ```dart
+  /// [2, 5].writeAsJson();
+  /// ```
+  void writeAsJson({
+    String filepath = "outputs/output.txt",
+    bool skipInCliArgs = false,
+    bool pretty = true,
+  }) {
+    filepath = getOutputPathFromArgs(filepath, skipInCliArgs);
+    JsonEncoder encoder = pretty ? JsonEncoder.withIndent('  ') : JsonEncoder();
+    File(filepath).writeAsStringSync(encoder.convert(this));
+  }
+}
+
+/// Writes file at [filepath] with [content] as JSON.
+///
+/// By default JSON will be formated, set [pretty] to false to output minimal
+/// JSON.
+/// Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
+/// when script is run from command line.
+///
+/// Example:
+/// ```dart
+/// output.writeAsJson([2, 5]);
+/// ```
+void writeAsJson(
+  Uint8List content, {
+  String filepath = "outputs/output.txt",
+  bool skipInCliArgs = false,
+  bool pretty = true,
+}) {
+  content.writeAsJson(
+    filepath: filepath,
+    skipInCliArgs: skipInCliArgs,
+    pretty: pretty,
+  );
+}

@@ -52,6 +52,22 @@ Example:
 Uint8List content = input.readAsBytes();
 ```
 
+### readAsJson
+```dart
+dynamic readAsJson({
+  String filepath = "inputs/input.txt",
+  bool skipInCliArgs = false,
+})
+```
+Reads file at [filepath] as JSON.  
+Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
+when script is run from command line.
+
+Example:
+```dart
+var content = input.readAsJson();
+```
+
 ## Output
 
 ### writeAsString
@@ -147,6 +163,39 @@ void Uint8List.writeAsBytes({
 Example:
 ```dart
 Uint8List.fromList([2, 5]).writeAsBytes();
+```
+
+### writeAsJson
+```dart
+void writeAsJson(
+  Uint8List content, {
+  String filepath = "outputs/output.txt",
+  bool skipInCliArgs = false,
+  bool pretty = true,
+})
+```
+Writes file at [filepath] with [content] as JSON.  
+By default JSON will be formated, set [pretty] to false to output minimal
+JSON.  
+Set [skipInCliArgs] to _true_ to disallow changing [filepath] set in code
+when script is run from command line.
+
+Example:
+```dart
+output.writeAsJson([2, 5]);
+```
+
+#### Extension method
+```dart
+void Object.writeAsJson({
+  String filepath = "outputs/output.txt",
+  bool skipInCliArgs = false,
+  bool pretty = true,
+})
+```
+Example:
+```dart
+[2, 5].writeAsJson();
 ```
 
 ## Utils
