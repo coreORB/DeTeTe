@@ -55,7 +55,7 @@ extension DevCaseConvert on String {
   /// ```
   String toCase(Case toCase) {
     List<String> parts = [];
-    if (matchesAll(RegExp(r'^[a-z][a-z-]*$')).isNotEmpty) {
+    if (matchesAll(RegExp(r'^[a-z][a-z0-9-]*$')).isNotEmpty) {
       if (substring(length - 1, length)
               .matchesAll(RegExp('[a-z]'))
               .isNotEmpty &&
@@ -64,7 +64,7 @@ extension DevCaseConvert on String {
       } else {
         throw FormatException("'$this' is not valid kebab case");
       }
-    } else if (matchesAll(RegExp(r'^[A-Z][A-Z_]*$')).isNotEmpty) {
+    } else if (matchesAll(RegExp(r'^[A-Z][A-Z0-9_]*$')).isNotEmpty) {
       if (substring(length - 1, length)
               .matchesAll(RegExp('[A-Z]'))
               .isNotEmpty &&
@@ -74,7 +74,7 @@ extension DevCaseConvert on String {
       } else {
         throw FormatException("'$this' is not valid upper case snake case");
       }
-    } else if (matchesAll(RegExp(r'^[a-z][a-z_]*$')).isNotEmpty) {
+    } else if (matchesAll(RegExp(r'^[a-z][a-z0-9_]*$')).isNotEmpty) {
       if (substring(length - 1, length)
               .matchesAll(RegExp('[a-z]'))
               .isNotEmpty &&
@@ -83,7 +83,7 @@ extension DevCaseConvert on String {
       } else {
         throw FormatException("'$this' is not valid snake case");
       }
-    } else if (matchesAll(RegExp(r'^[a-zA-Z]+$')).isNotEmpty) {
+    } else if (matchesAll(RegExp(r'^[a-zA-Z0-9]+$')).isNotEmpty) {
       var lastCapitalLetterIndex = 0;
       for (var i = 1; i < length; i++) {
         if (codeUnitAt(i) >= 65 && codeUnitAt(i) <= 90) {
